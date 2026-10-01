@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "description": "CRC-10/ATM vectors for RecoveryCode protected fields. catalogCheckValue below reproduces the well-known external CRC-10/ATM catalog check value, as its own nested description states. The remaining `vectors` entries (empty, asciiA, asciiHelloWorld, and the two recoveryCode* fixtures) are project-normative: repository-chosen inputs run through that same officially parametrised CRC-10/ATM algorithm, not independently published values.",
+  "catalogCheckValue": {
+    "description": "The well-known CRC-10/ATM catalog check value: CRC-10/ATM of the ASCII bytes of \"123456789\", MSB-first byte by byte, published independently of this module or its spec.",
+    "inputAscii": "123456789",
+    "crcHex": "0199"
+  },
+  "vectors": [
+    {
+      "name": "empty",
+      "inputHex": "",
+      "nBits": 0,
+      "crcHex": "0000"
+    },
+    {
+      "name": "asciiA",
+      "inputHex": "41",
+      "nBits": 8,
+      "crcHex": "02f7"
+    },
+    {
+      "name": "asciiHelloWorld",
+      "inputHex": "48656c6c6f2c20776f726c6421",
+      "nBits": 104,
+      "crcHex": "039e"
+    },
+    {
+      "name": "recoveryCodeWorkedExampleProtectedField",
+      "inputHex": "0070f3c86424c87d1726f7dcaad791fa7d49ec",
+      "nBits": 140,
+      "crcHex": "027b"
+    },
+    {
+      "name": "recoveryCodeTamperedProtectedField",
+      "inputHex": "0070b3c86424c87d1726f7dcaad791fa7d4198",
+      "nBits": 140,
+      "crcHex": "0066"
+    }
+  ]
+}

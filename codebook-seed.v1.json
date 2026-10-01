@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "description": "CodeBookSeed HKDF-SHA-256 derivation from a UserKey and a non-zero CodeBookIndex. Project-normative: HKDF-SHA-256 (RFC 5869) is a public algorithm, but this derivation's domain separation and output are Fortego's own design, pinned here as this implementation's frozen output -- not values published by an external standard. userKeyHex is this project's own upstream derivation output (see internal/derive/user-key.v1.json), not externally sourced.",
+  "vectors": [
+    {
+      "name": "index1",
+      "userKeyHex": "42103e59c04a69a73ee5c9304c8db91ee030e38c9e74895cec8836af900bcf43",
+      "index": "1",
+      "codeBookSeedHex": "c5adef2a8adacbfae0a30578e617ff90fc4357bc139387a14c67e268a84002f9"
+    },
+    {
+      "name": "index2",
+      "userKeyHex": "42103e59c04a69a73ee5c9304c8db91ee030e38c9e74895cec8836af900bcf43",
+      "index": "2",
+      "codeBookSeedHex": "f97f0b3f15aaa30299b18e2405702f8de0ac893c826bbb5eefe394ee1b543b15"
+    },
+    {
+      "name": "index10",
+      "userKeyHex": "42103e59c04a69a73ee5c9304c8db91ee030e38c9e74895cec8836af900bcf43",
+      "index": "10",
+      "codeBookSeedHex": "a2e820b52312f59aef5e924047a0cf4ea0d516251bec09dbc436c90a095c2919"
+    },
+    {
+      "name": "indexMaxUint64",
+      "userKeyHex": "42103e59c04a69a73ee5c9304c8db91ee030e38c9e74895cec8836af900bcf43",
+      "index": "18446744073709551615",
+      "codeBookSeedHex": "2663b547ba1b61bd44f4b2842db753c2171500cabed4fb1001a9b30177e0c538"
+    }
+  ]
+}

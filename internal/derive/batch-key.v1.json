@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "description": "BatchKey HKDF-SHA-256 derivation vectors. Project-normative: HKDF-SHA-256 (RFC 5869) is a public algorithm, but the domain-separation strings and this derived BatchKey output are Fortego's own design, pinned here as this implementation's frozen output -- not values published by an external standard. entropyHex reuses a Trezor python-mnemonic reference-vector entropy value (see internal/bip39/bip39.v1.json); everything downstream of it (saltHex/infoHex/prkHex/batchKeyHex) is this project's own derivation.",
+  "vectors": [
+    {
+      "name": "batchNumber1",
+      "entropyHex": "0000000000000000000000000000000000000000000000000000000000000000",
+      "derivationVersion": 1,
+      "batchNumber": 1,
+      "saltHex": "0000001e666f727465676f3a636f6465626f6f6b2d64657269766174696f6e3a76310000000e62617463682d6b65792d73616c74",
+      "infoHex": "0000001e666f727465676f3a636f6465626f6f6b2d64657269766174696f6e3a76310000000962617463682d6b65790000000101000000020001",
+      "prkHex": "6756e6bc397dd224dced0569e6c4d4ac9f9357f32e06dfaa5b49925385b5e51e",
+      "batchKeyHex": "9b4a8cf47c8a8c26b7830f4687ebca6643da00154b8b4b85cad7deb48ccecca5"
+    },
+    {
+      "name": "batchNumber2DomainSeparation",
+      "entropyHex": "0000000000000000000000000000000000000000000000000000000000000000",
+      "derivationVersion": 1,
+      "batchNumber": 2,
+      "saltHex": "0000001e666f727465676f3a636f6465626f6f6b2d64657269766174696f6e3a76310000000e62617463682d6b65792d73616c74",
+      "infoHex": "0000001e666f727465676f3a636f6465626f6f6b2d64657269766174696f6e3a76310000000962617463682d6b65790000000101000000020002",
+      "prkHex": "6756e6bc397dd224dced0569e6c4d4ac9f9357f32e06dfaa5b49925385b5e51e",
+      "batchKeyHex": "fe9bcf244e665cf5473c68ef2264ffdd4f6bcd4a52b4ce2c1027142046458c92"
+    },
+    {
+      "name": "batchNumber256Boundary",
+      "entropyHex": "0000000000000000000000000000000000000000000000000000000000000000",
+      "derivationVersion": 1,
+      "batchNumber": 256,
+      "saltHex": "0000001e666f727465676f3a636f6465626f6f6b2d64657269766174696f6e3a76310000000e62617463682d6b65792d73616c74",
+      "infoHex": "0000001e666f727465676f3a636f6465626f6f6b2d64657269766174696f6e3a76310000000962617463682d6b65790000000101000000020100",
+      "prkHex": "6756e6bc397dd224dced0569e6c4d4ac9f9357f32e06dfaa5b49925385b5e51e",
+      "batchKeyHex": "565b6b72c9283ab90652fc28783f39e058349103440d6a21090c2844f8bf85e1"
+    },
+    {
+      "name": "batchNumber1023Boundary",
+      "entropyHex": "0000000000000000000000000000000000000000000000000000000000000000",
+      "derivationVersion": 1,
+      "batchNumber": 1023,
+      "saltHex": "0000001e666f727465676f3a636f6465626f6f6b2d64657269766174696f6e3a76310000000e62617463682d6b65792d73616c74",
+      "infoHex": "0000001e666f727465676f3a636f6465626f6f6b2d64657269766174696f6e3a76310000000962617463682d6b657900000001010000000203ff",
+      "prkHex": "6756e6bc397dd224dced0569e6c4d4ac9f9357f32e06dfaa5b49925385b5e51e",
+      "batchKeyHex": "dd629817068367efe834e62897eec4867eba70d24c716ce79a1bc367bdf4d945"
+    }
+  ]
+}

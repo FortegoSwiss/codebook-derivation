@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "description": "BatchEntropy.RecoverUserKey reconstruction vectors. Project-normative: this reconstruction path is Fortego's own design, pinned here as this implementation's frozen output -- not values published by an external standard. batchEntropyHex reuses a Trezor python-mnemonic reference-vector entropy value (see internal/bip39/bip39.v1.json); recoveryCode and userKeyHex are this project's own derivation output.",
+  "vectors": [
+    {
+      "name": "batchNumber1EntryIndex1",
+      "batchEntropyHex": "0000000000000000000000000000000000000000000000000000000000000000",
+      "recoveryCode": "01X45M9WDSKH47Q4XHCW6ZM73ENMCR",
+      "userKeyHex": "42103e59c04a69a73ee5c9304c8db91ee030e38c9e74895cec8836af900bcf43"
+    },
+    {
+      "name": "batchNumber256Boundary",
+      "batchEntropyHex": "0000000000000000000000000000000000000000000000000000000000000000",
+      "recoveryCode": "80BCV3DT7Z90WMCH5E37G6TQPXTRQS",
+      "userKeyHex": "681f0da1a28ec7c9bcd0cb09d94a6ba7a0e35d1b2246f0bd7861c1e39bf0438d"
+    },
+    {
+      "name": "batchNumber1023Boundary",
+      "batchEntropyHex": "0000000000000000000000000000000000000000000000000000000000000000",
+      "recoveryCode": "ZZGC2GED6QKC0XPWV7ZJCKBETYDRPX",
+      "userKeyHex": "d49e00231dbcb20a80b3c9b94e97e980347e15d8b59af228deb8f70c3eed4f91"
+    }
+  ]
+}

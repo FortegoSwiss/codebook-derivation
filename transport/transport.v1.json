@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "description": "AES-256-GCM transport-envelope round-trip and rejection vectors. The envelope version is authenticated as AAD. The plaintext is deliberately arbitrary bytes -- transport is independent of Batch, Entry, or Fingerprint and does not parse its plaintext. Project-normative: AES-256-GCM (NIST SP 800-38D) is a public, standardized algorithm, but this file's specific key/nonce/plaintext/ciphertext values are this project's own arbitrarily chosen fixture inputs and this implementation's frozen output -- not values published by NIST or any other external source.",
+  "keyHex": "1111111111111111111111111111111111111111111111111111111111111111",
+  "nonceHex": "222222222222222222222222",
+  "aadHex": "01",
+  "plaintextHex": "5472616e73706f727420656e63727970747320617262697472617279206279746573206f6e6c793b20697420686173206e6f20636f6e63657074206f662042617463682c20456e7472792c206f722046696e6765727072696e742e",
+  "ciphertextHex": "43856627b3bff02d911fbb522bd490a56be0ed8318e3c53f202e789129831c77200c8b6d3dc480e56e31990d8e393a15ddbdbe01fa1c199bc400ca96844badd30cef741471c03f6699181ab1789bde4a8cd3c45b719ea93a3775ff486cc0e3c93f776f8860d0aa0a73d111",
+  "envelopeHex": "0122222222222222222222222243856627b3bff02d911fbb522bd490a56be0ed8318e3c53f202e789129831c77200c8b6d3dc480e56e31990d8e393a15ddbdbe01fa1c199bc400ca96844badd30cef741471c03f6699181ab1789bde4a8cd3c45b719ea93a3775ff486cc0e3c93f776f8860d0aa0a73d111",
+  "minEnvelopeSize": 29,
+  "maxPlaintextSize": 67108864,
+  "maxEnvelopeSize": 67108893,
+  "rejections": [
+    {
+      "name": "ciphertextTamper",
+      "envelopeHex": "0122222222222222222222222243856627b3bff02d911fbb522bd490a56be0ed8318e3c53f202e789129831c77200c8b6d3dc480e56e31990d8e393a15ddbdbe01fa1c199bc400ca96844badd30cef741471c03f6699181ab1789bde4a8cd3c45b719ea93a3775ff486cc0e3c93f776f8860d0aa0a73d1ee",
+      "keyHex": "1111111111111111111111111111111111111111111111111111111111111111",
+      "wantError": "ErrAuthenticationFailed"
+    },
+    {
+      "name": "nonceTamper",
+      "envelopeHex": "01dd222222222222222222222243856627b3bff02d911fbb522bd490a56be0ed8318e3c53f202e789129831c77200c8b6d3dc480e56e31990d8e393a15ddbdbe01fa1c199bc400ca96844badd30cef741471c03f6699181ab1789bde4a8cd3c45b719ea93a3775ff486cc0e3c93f776f8860d0aa0a73d111",
+      "keyHex": "1111111111111111111111111111111111111111111111111111111111111111",
+      "wantError": "ErrAuthenticationFailed"
+    },
+    {
+      "name": "wrongKey",
+      "envelopeHex": "0122222222222222222222222243856627b3bff02d911fbb522bd490a56be0ed8318e3c53f202e789129831c77200c8b6d3dc480e56e31990d8e393a15ddbdbe01fa1c199bc400ca96844badd30cef741471c03f6699181ab1789bde4a8cd3c45b719ea93a3775ff486cc0e3c93f776f8860d0aa0a73d111",
+      "keyHex": "3333333333333333333333333333333333333333333333333333333333333333",
+      "wantError": "ErrAuthenticationFailed"
+    },
+    {
+      "name": "unrecognizedEnvelopeVersion",
+      "envelopeHex": "0222222222222222222222222243856627b3bff02d911fbb522bd490a56be0ed8318e3c53f202e789129831c77200c8b6d3dc480e56e31990d8e393a15ddbdbe01fa1c199bc400ca96844badd30cef741471c03f6699181ab1789bde4a8cd3c45b719ea93a3775ff486cc0e3c93f776f8860d0aa0a73d111",
+      "keyHex": "1111111111111111111111111111111111111111111111111111111111111111",
+      "wantError": "ErrUnrecognizedVersion"
+    }
+  ]
+}

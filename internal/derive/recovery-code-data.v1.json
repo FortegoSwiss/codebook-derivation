@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "description": "RecoveryCodeData HKDF-SHA-256 derivation vectors. Project-normative: HKDF-SHA-256 (RFC 5869) is a public algorithm, but the domain-separation strings and this derived output are Fortego's own design, pinned here as this implementation's frozen output -- not values published by an external standard. entropyHex reuses a Trezor python-mnemonic reference-vector entropy value (see internal/bip39/bip39.v1.json); everything downstream of it (saltHex/infoHex/prkHex/recoveryCodeDataHex) is this project's own derivation.",
+  "vectors": [
+    {
+      "name": "entryIndex1",
+      "entropyHex": "7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f",
+      "derivationVersion": 1,
+      "batchNumber": 1,
+      "entryIndex": 1,
+      "saltHex": "0000001e666f727465676f3a636f6465626f6f6b2d64657269766174696f6e3a7631000000177265636f766572792d636f64652d646174612d73616c74",
+      "infoHex": "0000001e666f727465676f3a636f6465626f6f6b2d64657269766174696f6e3a7631000000127265636f766572792d636f64652d6461746100000001010000000200010000000400000001",
+      "prkHex": "22a0767dc198f2cd65b54fe2372afd11186aeebb2364596a682d1cd1251004da",
+      "recoveryCodeDataHex": "e90b44f1b99c487b93b1670dfa1c6ead"
+    },
+    {
+      "name": "entryIndex2",
+      "entropyHex": "7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f",
+      "derivationVersion": 1,
+      "batchNumber": 1,
+      "entryIndex": 2,
+      "saltHex": "0000001e666f727465676f3a636f6465626f6f6b2d64657269766174696f6e3a7631000000177265636f766572792d636f64652d646174612d73616c74",
+      "infoHex": "0000001e666f727465676f3a636f6465626f6f6b2d64657269766174696f6e3a7631000000127265636f766572792d636f64652d6461746100000001010000000200010000000400000002",
+      "prkHex": "22a0767dc198f2cd65b54fe2372afd11186aeebb2364596a682d1cd1251004da",
+      "recoveryCodeDataHex": "20eb2f8c495d51827501abfcfb8c2276"
+    },
+    {
+      "name": "entryIndex256Boundary",
+      "entropyHex": "7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f",
+      "derivationVersion": 1,
+      "batchNumber": 1,
+      "entryIndex": 256,
+      "saltHex": "0000001e666f727465676f3a636f6465626f6f6b2d64657269766174696f6e3a7631000000177265636f766572792d636f64652d646174612d73616c74",
+      "infoHex": "0000001e666f727465676f3a636f6465626f6f6b2d64657269766174696f6e3a7631000000127265636f766572792d636f64652d6461746100000001010000000200010000000400000100",
+      "prkHex": "22a0767dc198f2cd65b54fe2372afd11186aeebb2364596a682d1cd1251004da",
+      "recoveryCodeDataHex": "0599f191796cf3b4eb4463b3ef34692b"
+    },
+    {
+      "name": "entryIndex100000Boundary",
+      "entropyHex": "7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f",
+      "derivationVersion": 1,
+      "batchNumber": 1,
+      "entryIndex": 100000,
+      "saltHex": "0000001e666f727465676f3a636f6465626f6f6b2d64657269766174696f6e3a7631000000177265636f766572792d636f64652d646174612d73616c74",
+      "infoHex": "0000001e666f727465676f3a636f6465626f6f6b2d64657269766174696f6e3a7631000000127265636f766572792d636f64652d64617461000000010100000002000100000004000186a0",
+      "prkHex": "22a0767dc198f2cd65b54fe2372afd11186aeebb2364596a682d1cd1251004da",
+      "recoveryCodeDataHex": "f710a13fad081ecd51969dadcba76633"
+    },
+    {
+      "name": "batchNumber256BoundaryEntryIndex1",
+      "entropyHex": "7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f",
+      "derivationVersion": 1,
+      "batchNumber": 256,
+      "entryIndex": 1,
+      "saltHex": "0000001e666f727465676f3a636f6465626f6f6b2d64657269766174696f6e3a7631000000177265636f766572792d636f64652d646174612d73616c74",
+      "infoHex": "0000001e666f727465676f3a636f6465626f6f6b2d64657269766174696f6e3a7631000000127265636f766572792d636f64652d6461746100000001010000000201000000000400000001",
+      "prkHex": "22a0767dc198f2cd65b54fe2372afd11186aeebb2364596a682d1cd1251004da",
+      "recoveryCodeDataHex": "5b3636e8ff48394644ae19e06d5eddd6"
+    },
+    {
+      "name": "batchNumber1023BoundaryEntryIndex1",
+      "entropyHex": "7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f7f",
+      "derivationVersion": 1,
+      "batchNumber": 1023,
+      "entryIndex": 1,
+      "saltHex": "0000001e666f727465676f3a636f6465626f6f6b2d64657269766174696f6e3a7631000000177265636f766572792d636f64652d646174612d73616c74",
+      "infoHex": "0000001e666f727465676f3a636f6465626f6f6b2d64657269766174696f6e3a7631000000127265636f766572792d636f64652d6461746100000001010000000203ff0000000400000001",
+      "prkHex": "22a0767dc198f2cd65b54fe2372afd11186aeebb2364596a682d1cd1251004da",
+      "recoveryCodeDataHex": "83050734d79b01db7367fc9935bb5e6e"
+    }
+  ]
+}

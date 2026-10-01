@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "description": "RecoveryCode packing, parsing, alias, tampering, and rejection vectors. Project-normative: the RecoveryCode wire format and its Crockford Base32 rendering rules are Fortego's own design, pinned here as this implementation's frozen output -- not values published by an external standard. (The Crockford Base32 alphabet and O/I/L aliasing rules it builds on are an external convention -- see README.md's 'Crockford Base32 alphabet' -- but this file's specific packed/encoded values are this project's own.)",
+  "workedExample": {
+    "name": "batchNumber1EntryIndex1",
+    "recoveryCodeDataHex": "c3cf21909321f45c9bdf72ab5e47e9f5",
+    "batchNumber": 1,
+    "extension": 0,
+    "protectedCrcHex": "027b",
+    "ungrouped": "01RF7J344K47T5S6YZEANNWHZ9YMKV",
+    "grouped": "01RF7-J344K-47T5S-6YZEA-NNWHZ-9YMKV",
+    "tamperedDataHex": "c2cf21909321f45c9bdf72ab5e47e9f5",
+    "tamperedCrcHex": "0066",
+    "tamperedStaleCrcWireGrouped": "01RB7-J344K-47T5S-6YZEA-NNWHZ-9YMKV"
+  },
+  "toleratedVariants": [
+    {
+      "name": "zero-alias-O",
+      "input": "O1RF7-J344K-47T5S-6YZEA-NNWHZ-9YMKV",
+      "expectedGrouped": "01RF7-J344K-47T5S-6YZEA-NNWHZ-9YMKV"
+    },
+    {
+      "name": "zero-alias-o",
+      "input": "o1RF7-J344K-47T5S-6YZEA-NNWHZ-9YMKV",
+      "expectedGrouped": "01RF7-J344K-47T5S-6YZEA-NNWHZ-9YMKV"
+    },
+    {
+      "name": "one-alias-I",
+      "input": "0IRF7-J344K-47T5S-6YZEA-NNWHZ-9YMKV",
+      "expectedGrouped": "01RF7-J344K-47T5S-6YZEA-NNWHZ-9YMKV"
+    },
+    {
+      "name": "one-alias-i",
+      "input": "0iRF7-J344K-47T5S-6YZEA-NNWHZ-9YMKV",
+      "expectedGrouped": "01RF7-J344K-47T5S-6YZEA-NNWHZ-9YMKV"
+    },
+    {
+      "name": "one-alias-L",
+      "input": "0LRF7-J344K-47T5S-6YZEA-NNWHZ-9YMKV",
+      "expectedGrouped": "01RF7-J344K-47T5S-6YZEA-NNWHZ-9YMKV"
+    },
+    {
+      "name": "one-alias-l",
+      "input": "0lRF7-J344K-47T5S-6YZEA-NNWHZ-9YMKV",
+      "expectedGrouped": "01RF7-J344K-47T5S-6YZEA-NNWHZ-9YMKV"
+    }
+  ],
+  "rejected": [
+    {
+      "name": "length-empty",
+      "input": "",
+      "wantError": "ErrRecoveryCodeLength"
+    },
+    {
+      "name": "length-1char",
+      "input": "0",
+      "wantError": "ErrRecoveryCodeLength"
+    },
+    {
+      "name": "length-29-ungrouped",
+      "input": "01RF7J344K47T5S6YZEANNWHZ9YMK",
+      "wantError": "ErrRecoveryCodeLength"
+    },
+    {
+      "name": "length-31-ungrouped",
+      "input": "01RF7J344K47T5S6YZEANNWHZ9YMKVV",
+      "wantError": "ErrRecoveryCodeLength"
+    },
+    {
+      "name": "length-34-grouped",
+      "input": "01RF7-J344K-47T5S-6YZEA-NNWHZ-9YMK",
+      "wantError": "ErrRecoveryCodeLength"
+    },
+    {
+      "name": "length-36-grouped",
+      "input": "01RF7-J344K-47T5S-6YZEA-NNWHZ-9YMKVV",
+      "wantError": "ErrRecoveryCodeLength"
+    },
+    {
+      "name": "misplaced-hyphen",
+      "input": "01RF7J-344K-47T5S-6YZEA-NNWHZ-9YMKV",
+      "wantError": "ErrRecoveryCodeHyphen"
+    },
+    {
+      "name": "u-rejected",
+      "input": "0URF7-J344K-47T5S-6YZEA-NNWHZ-9YMKV",
+      "wantError": "ErrRecoveryCodeChar"
+    },
+    {
+      "name": "non-crockford-char-rejected",
+      "input": "0!RF7-J344K-47T5S-6YZEA-NNWHZ-9YMKV",
+      "wantError": "ErrRecoveryCodeChar"
+    },
+    {
+      "name": "extension-rejected-after-crc",
+      "input": "01RF7-J344K-47T5S-6YZEA-NNWHZ-9YN28",
+      "wantError": "ErrRecoveryCodeExtension"
+    },
+    {
+      "name": "crc-corrupted",
+      "input": "01RB7-J344K-47T5S-6YZEA-NNWHZ-9YMKV",
+      "wantError": "ErrRecoveryCodeCRC"
+    },
+    {
+      "name": "batchnumber-zero-rejected",
+      "input": "000000000000000000000000000000",
+      "wantError": "ErrInvalidBatchNumber"
+    }
+  ]
+}

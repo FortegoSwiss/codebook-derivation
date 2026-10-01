@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "description": "UserKey HKDF-SHA-256 derivation vectors. Project-normative: HKDF-SHA-256 (RFC 5869) is a public algorithm, but the domain-separation strings and this derived output are Fortego's own design, pinned here as this implementation's frozen output -- not values published by an external standard. batchKeyHex/recoveryCodeDataHex are this project's own upstream derivation outputs (see batch-key.v1.json / recovery-code-data.v1.json), not externally sourced.",
+  "vectors": [
+    {
+      "name": "batchNumber1EntryIndex1",
+      "batchKeyHex": "9b4a8cf47c8a8c26b7830f4687ebca6643da00154b8b4b85cad7deb48ccecca5",
+      "recoveryCodeDataHex": "e90b44f1b99c487b93b1670dfa1c6ead",
+      "derivationVersion": 1,
+      "batchNumber": 1,
+      "extension": 0,
+      "ikmHex": "9b4a8cf47c8a8c26b7830f4687ebca6643da00154b8b4b85cad7deb48ccecca5e90b44f1b99c487b93b1670dfa1c6ead",
+      "prkHex": "8f799c5bb708a5bc6edc90bc7438cde7bdb6423eb61d59ef148fff9787955a5b",
+      "userKeyHex": "42103e59c04a69a73ee5c9304c8db91ee030e38c9e74895cec8836af900bcf43"
+    },
+    {
+      "name": "batchNumber256Boundary",
+      "batchKeyHex": "565b6b72c9283ab90652fc28783f39e058349103440d6a21090c2844f8bf85e1",
+      "recoveryCodeDataHex": "5b3636e8ff48394644ae19e06d5eddd6",
+      "derivationVersion": 1,
+      "batchNumber": 256,
+      "extension": 0,
+      "ikmHex": "565b6b72c9283ab90652fc28783f39e058349103440d6a21090c2844f8bf85e15b3636e8ff48394644ae19e06d5eddd6",
+      "prkHex": "34ea452a393c20c4520a0ab1133702f1c2f0ca71c3fed7a28e8608d4d6d9783e",
+      "userKeyHex": "681f0da1a28ec7c9bcd0cb09d94a6ba7a0e35d1b2246f0bd7861c1e39bf0438d"
+    },
+    {
+      "name": "batchNumber1023Boundary",
+      "batchKeyHex": "dd629817068367efe834e62897eec4867eba70d24c716ce79a1bc367bdf4d945",
+      "recoveryCodeDataHex": "83050734d79b01db7367fc9935bb5e6e",
+      "derivationVersion": 1,
+      "batchNumber": 1023,
+      "extension": 0,
+      "ikmHex": "dd629817068367efe834e62897eec4867eba70d24c716ce79a1bc367bdf4d94583050734d79b01db7367fc9935bb5e6e",
+      "prkHex": "16cb3b5e2f01331fc4e4f0700e2034a3e863c3ac15d213fde00cc67cad58bad3",
+      "userKeyHex": "d49e00231dbcb20a80b3c9b94e97e980347e15d8b59af228deb8f70c3eed4f91"
+    },
+    {
+      "name": "entryIndex256Boundary",
+      "batchKeyHex": "9b4a8cf47c8a8c26b7830f4687ebca6643da00154b8b4b85cad7deb48ccecca5",
+      "recoveryCodeDataHex": "0599f191796cf3b4eb4463b3ef34692b",
+      "derivationVersion": 1,
+      "batchNumber": 1,
+      "extension": 0,
+      "ikmHex": "9b4a8cf47c8a8c26b7830f4687ebca6643da00154b8b4b85cad7deb48ccecca50599f191796cf3b4eb4463b3ef34692b",
+      "prkHex": "3142ede6bf1574b4a48ef02bf3223ea064f15efb1d6feee738e97f96632d40d8",
+      "userKeyHex": "b9110ea53f3361367595c8be62314d5e61d86bdf2dbfcb8cfa97e8c07eafd0dd"
+    },
+    {
+      "name": "entryIndex100000Boundary",
+      "batchKeyHex": "9b4a8cf47c8a8c26b7830f4687ebca6643da00154b8b4b85cad7deb48ccecca5",
+      "recoveryCodeDataHex": "f710a13fad081ecd51969dadcba76633",
+      "derivationVersion": 1,
+      "batchNumber": 1,
+      "extension": 0,
+      "ikmHex": "9b4a8cf47c8a8c26b7830f4687ebca6643da00154b8b4b85cad7deb48ccecca5f710a13fad081ecd51969dadcba76633",
+      "prkHex": "dee6434aaa991a1aaec80974d82b89d4ea85690de8e67a52118dcf771957a324",
+      "userKeyHex": "1c03b2835408ccf1f83ecd06a2981293b314ae885cd9d16947ff4ae3b8d1f6fa"
+    }
+  ]
+}
