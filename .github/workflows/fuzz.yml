@@ -1,0 +1,95 @@
+name: Fuzz
+
+# Run each fuzz target on a schedule or on demand. Preserve discovered inputs
+# as artifacts for review and deliberate inclusion in the regression corpus.
+
+on:
+  schedule:
+    # 03:17 UTC daily; an off-the-hour time to avoid the top-of-hour
+    # scheduling crush GitHub Actions is prone to.
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+    inputs:
+      fuzztime:
+        description: Duration to fuzz each target (Go duration, e.g. 30s, 5m)
+        required: false
+        default: 5m
+
+permissions:
+  contents: read
+
+env:
+  # This repo's local, gitignored go.work (if a developer has one checked
+  # out elsewhere) is never present in a fresh CI checkout, but pin
+  # workspace mode off explicitly anyway: `go list -m`/GOCACHE fuzz-corpus
+  # paths below assume exactly one module, this one.
+  GOWORK: "off"
+  FUZZTIME: ${{ github.event.inputs.fuzztime || '5m' }}
+
+jobs:
+  fuzz:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: fuzz
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          check-latest: true
+
+      - name: Fuzz every FuzzXxx target
+        run: |
+          set -eu
+          targets="
+          .|FuzzDecodeBatch
+          transport|FuzzOpen
+          internal/recoverycode|FuzzParse
+          "
+          echo "$targets" | while IFS='|' read -r pkgdir target; do
+            [ -z "$target" ] && continue
+            echo "::group::go test -fuzz=${target} (${FUZZTIME}) in ${pkgdir}"
+            go test -run='^$' -fuzz="^${target}\$" -fuzztime="${FUZZTIME}" "./${pkgdir}"
+            echo "::endgroup::"
+          done
+
+      - name: Collect interesting corpus inputs
+        if: always()
+        # Failing inputs are written directly to testdata/fuzz. Successful
+        # coverage-increasing inputs live in the build cache; collect them
+        # even when a later fuzz target fails.
+        run: |
+          set -eu
+          modpath="$(go list -m)"
+          gocache="$(go env GOCACHE)"
+          targets="
+          ${modpath}|.|FuzzDecodeBatch
+          ${modpath}/transport|transport|FuzzOpen
+          ${modpath}/internal/recoverycode|internal/recoverycode|FuzzParse
+          "
+          echo "$targets" | while IFS='|' read -r importpath pkgdir target; do
+            [ -z "$target" ] && continue
+            cachedir="${gocache}/fuzz/${importpath}/${target}"
+            destdir="${pkgdir}/testdata/fuzz/${target}"
+            if [ -d "$cachedir" ] && [ -n "$(ls -A "$cachedir" 2>/dev/null)" ]; then
+              mkdir -p "$destdir"
+              cp -n "$cachedir"/* "$destdir"/
+            fi
+          done
+
+      - name: Re-run the full suite against the new corpus
+        run: go test -race -count=1 ./...
+
+      - name: Save corpus for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fuzz-corpus
+          path: |
+            testdata/fuzz/**
+            **/testdata/fuzz/**
+          if-no-files-found: ignore
