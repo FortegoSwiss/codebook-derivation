@@ -1,0 +1,19 @@
+Fortego CodeBook Derivation
+Copyright 2026 Fortego
+
+This product includes software developed at Fortego (https://fortego.ch).
+
+This software depends on the following third-party components, which are
+licensed under the 3-Clause BSD License and are not redistributed as part of
+this repository:
+
+  golang.org/x/crypto
+  Copyright 2009 The Go Authors.
+
+  golang.org/x/sys
+  Copyright 2009 The Go Authors.
+
+This repository references codebook-cipher as a Go module dependency; it does
+not redistribute its source. When distributing binaries, retain the applicable
+licenses and notices of linked dependencies, including codebook-cipher's
+embedded BIP-39 MIT material.
