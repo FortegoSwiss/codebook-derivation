@@ -39,8 +39,9 @@ jobs:
 
       - uses: actions/setup-go@v5
         with:
-          go-version-file: go.mod
-          check-latest: true
+          # Includes the fuzz deadline race fix (golang/go#75804).
+          # Keep the CI toolchain independent of the module's minimum Go version.
+          go-version: '1.27.1'
 
       - name: Fuzz every FuzzXxx target
         run: |
